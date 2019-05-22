@@ -1,0 +1,9 @@
+﻿using {{namespace}}.Entities.Base;
+
+namespace {{namespace}}.Entities
+{
+    public partial class {{name}}Model : DomainModel
+    {       
+     
+    }
+}

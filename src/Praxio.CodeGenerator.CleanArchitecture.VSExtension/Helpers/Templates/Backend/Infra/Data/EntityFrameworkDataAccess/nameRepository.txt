@@ -1,0 +1,15 @@
+﻿using AutoMapper;
+using {{namespaceApplication}}.Interfaces.Repositories;
+using {{namespaceDomain}}.Entities;
+using {{namespace}}.EntityFrameworkDataAccess.DataModels;
+
+namespace {{namespace}}.EntityFrameworkDataAccess.Repositories
+{
+    public class {{name}}Repository : Repository<{{name}}Model, {{name}}Data>, I{{name}}Repository
+    {
+        public {{name}}Repository(IMapper mapper) : base(mapper) 
+		{ 
+		
+		}
+    }
+}

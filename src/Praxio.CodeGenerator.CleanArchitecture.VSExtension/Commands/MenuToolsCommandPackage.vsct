@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+
+  <Commands package="guidMenuToolsCommandPackage">
+
+    <Menus>
+      <Menu guid="guidMenuToolsCommandPackageCmdSet" id="MySubmenu" type="Menu">
+        <Strings>
+          <ButtonText>Praxio Tools</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+    
+    <Groups>
+      <Group guid="guidMenuToolsCommandPackageCmdSet" id="MyGroupForSubmenu" />
+      <Group guid="guidMenuToolsCommandPackageCmdSet" id="MyGroupForCommands" />      
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidMenuToolsCommandPackageCmdSet" id="cmdidCriarCrudCommand" type="Button">
+        <Icon guid="guidImages1" id="Create" />
+        <Strings>
+          <ButtonText>Criar Entidades - CRUD</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMenuToolsCommandPackageCmdSet" id="cmdidRegerarCrudCommand" type="Button">
+        <Icon guid="guidImages2" id="Recreate" />
+        <Strings>
+          <ButtonText>Regerar Entidades - CRUD</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\ico_p.png" usedList="Ico" />
+      <Bitmap guid="guidImages1" href="Resources\Create.png" usedList="Create" />
+      <Bitmap guid="guidImages2" href="Resources\Recreate.png" usedList="Recreate" />
+    </Bitmaps>
+  </Commands>
+  
+   <CommandPlacements>
+      <CommandPlacement guid="guidMenuToolsCommandPackageCmdSet" id="MyGroupForSubmenu" priority="0x0600">
+        <!-- The parent of the group will be the solution context menu -->
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </CommandPlacement>
+    
+      <CommandPlacement guid="guidMenuToolsCommandPackageCmdSet" id="MySubmenu" priority="0x0001">
+        <Parent guid="guidMenuToolsCommandPackageCmdSet" id="MyGroupForSubmenu"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidMenuToolsCommandPackageCmdSet" id="MyGroupForCommands" priority="0x0001">
+        <Parent guid="guidMenuToolsCommandPackageCmdSet" id="MySubmenu"/>
+      </CommandPlacement>
+
+      <!-- Placement for commands.
+             The parent of a command is always a group, never a menu, context menu or toolbar.
+        -->
+      <CommandPlacement guid="guidMenuToolsCommandPackageCmdSet" id="cmdidCriarCrudCommand" priority="0x0001" >
+        <Parent guid="guidMenuToolsCommandPackageCmdSet" id="MyGroupForCommands"/>
+      </CommandPlacement>
+      <CommandPlacement guid="guidMenuToolsCommandPackageCmdSet" id="cmdidRegerarCrudCommand" priority="0x0002" >
+        <Parent guid="guidMenuToolsCommandPackageCmdSet" id="MyGroupForCommands"/>
+      </CommandPlacement>
+   </CommandPlacements>
+  
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidMenuToolsCommandPackage" value="{afe9cd1c-b4fd-4f27-bd29-d3083c21ac5e}" />
+
+    <!-- This is the guid used to group the menu commands together -->
+    <GuidSymbol name="guidMenuToolsCommandPackageCmdSet" value="{2e9f832a-c663-4a4a-bf89-d6b67e5d2074}">
+      <IDSymbol name="MyGroupForSubmenu" value="0x1020" />
+      <IDSymbol name="MyGroupForCommands" value="0x1021" />
+      <IDSymbol name="MySubmenu" value="0x0100" />
+      <IDSymbol name="cmdidCriarCrudCommand" value="4131"/>
+      <IDSymbol name="cmdidRegerarCrudCommand" value="4130"/>
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImages" value="{4307a74b-fb2d-4868-ba0c-981256930953}">
+      <IDSymbol name="Ico" value="1" />      
+    </GuidSymbol>
+  
+    <GuidSymbol value="{7e583797-e716-40bb-be44-56907142472e}" name="guidImages1">
+      <IDSymbol name="Create" value="1" />      
+    </GuidSymbol>
+  
+    <GuidSymbol value="{1ca5390d-6d5b-4e0f-95cb-5fe44f5018ed}" name="guidImages2">
+      <IDSymbol name="Recreate" value="1" />      
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

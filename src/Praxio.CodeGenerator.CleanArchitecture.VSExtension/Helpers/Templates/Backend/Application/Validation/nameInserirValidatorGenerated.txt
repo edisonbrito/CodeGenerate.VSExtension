@@ -1,0 +1,14 @@
+﻿using FluentValidation;
+using {{namespace}}.UseCases.{{name}}.Base;
+using {{namespace}}.Resources;
+
+namespace {{namespace}}.{{name}}.Base.Validations
+{
+    public abstract class {{tipo}}{{name}}ValidatorGenerated : AbstractValidator<{{tipo}}{{name}}Request>
+    {
+		protected {{tipo}}{{name}}ValidatorGenerated()
+		{
+			{{property}}
+		}{{validations}}
+	}
+}

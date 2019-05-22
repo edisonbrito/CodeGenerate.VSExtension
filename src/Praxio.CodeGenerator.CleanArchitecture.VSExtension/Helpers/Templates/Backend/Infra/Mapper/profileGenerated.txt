@@ -1,0 +1,14 @@
+﻿using AutoMapper;
+using {{namespaceApplication}}.UseCases.{{name}}.Base;
+using {{namespaceDomain}}.Entities;
+
+namespace {{namespace}}.AutoMapper.Generated.{{name}}
+{
+    public class {{name}}ProfileGenerated : Profile
+    {
+		public {{name}}ProfileGenerated()
+		{
+			{{map}}
+		}
+    }	
+}

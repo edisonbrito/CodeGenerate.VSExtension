@@ -1,0 +1,5 @@
+﻿  <ItemGroup>
+    <Compile Update="{{path}}.Generated.cs">
+      <DependentUpon>{{name}}.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>

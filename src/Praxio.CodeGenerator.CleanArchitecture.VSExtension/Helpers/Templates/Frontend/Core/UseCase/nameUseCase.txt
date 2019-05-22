@@ -1,0 +1,69 @@
+﻿import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+
+import { I{{name}}Model } from '@app/core/domain/entities/{{nameCamelCase}}.model';
+import { I{{name}}Repository } from '@app/core/interfaces/repositories/I{{name}}Repository';
+import { I{{name}}UseCase } from '@app/core/interfaces/usecases/I{{name}}UseCase';
+import { I{{name}}Validator } from '@app/core/interfaces/validations/I{{name}}Validator';
+import { Logger } from '@app/infra/log/logger.service';
+
+const log = new Logger('{{name}}UseCase');
+
+@Injectable({
+  providedIn: 'root'
+})
+export class {{name}}UseCase implements I{{name}}UseCase<I{{name}}Model, I{{name}}Model> {
+
+  constructor(
+    private i{{name}}Repository: I{{name}}Repository,
+    private i{{name}}Validator: I{{name}}Validator
+  ) { }
+
+  obterAll(params: void): Observable<I{{name}}Model> {
+    return this.i{{name}}Repository.obterAll();
+  }
+  obter(params: I{{name}}Model): Observable<I{{name}}Model> {
+    const validator = this.i{{name}}Validator.validateFields(params);
+
+    if (validator.IsValid) {
+      return this.i{{name}}Repository.obter(params);
+    } else {
+      log.error(validator.Errors);
+
+      return throwError(validator.Errors);
+    }
+  }
+  inserir(params: I{{name}}Model): Observable<I{{name}}Model> {
+    const validator = this.i{{name}}Validator.validateFields(params);
+
+    if (validator.IsValid) {
+      return this.i{{name}}Repository.inserir(params);
+    } else {
+      log.error(validator.Errors);
+
+      return throwError(validator.Errors);
+    }
+  }
+  alterar(params: I{{name}}Model): Observable<I{{name}}Model> {
+    const validator = this.i{{name}}Validator.validateFields(params);
+
+    if (validator.IsValid) {
+      return this.i{{name}}Repository.alterar(params);
+    } else {
+      log.error(validator.Errors);
+
+      return throwError(validator.Errors);
+    }
+  }
+  excluir(params: number): Observable<I{{name}}Model> {
+    const validator = this.i{{name}}Validator.validarId(params);
+
+    if (validator.IsValid) {
+      return this.i{{name}}Repository.excluir(params);
+    } else {
+      log.error(validator.Errors);
+
+      return throwError(validator.Errors);
+    }
+  }
+}

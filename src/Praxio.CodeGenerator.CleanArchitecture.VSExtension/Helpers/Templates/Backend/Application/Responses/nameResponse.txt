@@ -1,0 +1,7 @@
+﻿namespace {{namespace}}.UseCases.{{name}}.Base
+{
+    public partial class {{name}}Response : UseCaseResponseMessage
+    {
+        
+    }
+}

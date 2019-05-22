@@ -1,0 +1,5 @@
+﻿import { I{{name}}ModelGenerated } from './{{nameCamelCase}}.model.generated';
+
+export interface I{{name}}Model extends I{{name}}ModelGenerated {
+  
+}

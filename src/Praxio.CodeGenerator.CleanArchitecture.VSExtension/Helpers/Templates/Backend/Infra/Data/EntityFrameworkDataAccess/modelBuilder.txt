@@ -1,0 +1,2 @@
+﻿modelBuilder.Entity<{{name}}>()
+     .ToTable("{{name}}");

@@ -1,0 +1,9 @@
+﻿using {{namespaceDomain}}.Entities;
+
+namespace {{namespace}}.Interfaces.Repositories
+{
+    public interface I{{name}}Repository : IRepository<{{name}}Model>
+    {  
+
+    }
+}

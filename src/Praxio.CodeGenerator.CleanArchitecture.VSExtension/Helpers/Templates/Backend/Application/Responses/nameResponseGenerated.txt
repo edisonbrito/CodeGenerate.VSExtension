@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace {{namespace}}.UseCases.{{name}}.Base
+{
+    public partial class {{name}}Response : UseCaseResponseMessage
+    {
+		public int Id { get; set; }
+
+        {{property}}
+
+		public {{name}}Response() { }
+
+		public {{name}}Response(string error) : base(error) { }
+
+		public {{name}}Response(IEnumerable<string> errors) : base(errors) { }
+    }
+}

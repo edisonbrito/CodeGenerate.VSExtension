@@ -1,0 +1,15 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using {{namespace}}.UseCases.{{name}}.Base;
+
+namespace {{namespace}}.Interfaces.UseCases
+{
+    public interface I{{name}}UseCase
+    {
+	    Task Inserir(Inserir{{name}}Request {{nameCamelCase}}Request, IOutputPort<{{name}}Response> outputPort);
+        Task Alterar(Alterar{{name}}Request {{nameCamelCase}}Request, IOutputPort<{{name}}Response> outputPort);
+        Task Excluir(int id, IOutputPort<{{name}}Response> outputPort);    
+		Task ObterPorId(int id, IOutputPort<{{name}}Response> outputPort);
+        Task ObterLista(IOutputPort<IEnumerable<{{name}}Response>> outputPort);            
+    }
+}

@@ -1,0 +1,7 @@
+﻿import { ValidationResult } from 'ts.validator.fluent/dist';
+import { I{{name}}Model } from '@app/core/domain/entities/{{nameCamelCase}}.model';
+
+export abstract class I{{name}}Validator {
+  abstract validateFields(model: I{{name}}Model): ValidationResult;
+  abstract validarId(id: number): ValidationResult;
+}

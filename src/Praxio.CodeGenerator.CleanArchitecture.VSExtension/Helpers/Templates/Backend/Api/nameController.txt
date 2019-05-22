@@ -1,0 +1,57 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using {{namespace}}.Response;
+using {{namespaceApplication}}.Interfaces.UseCases;
+using {{namespaceApplication}}.UseCases.{{name}}.Base;
+using System.Threading.Tasks;
+
+namespace {{namespace}}.Controllers
+{
+    [Route("api/[controller]")]
+    public class {{name}}Controller : Controller
+    {
+		private readonly I{{name}}UseCase _{{nameCamelCase}}UseCase;
+		private readonly Presenter _presenter;
+
+		public {{name}}Controller(I{{name}}UseCase {{nameCamelCase}}UseCase, Presenter presenter)
+		{
+			 _{{nameCamelCase}}UseCase = {{nameCamelCase}}UseCase;
+			 _presenter = presenter;
+		}
+
+		[HttpPost]
+        public async Task<IActionResult> Inserir([FromBody]Inserir{{name}}Request {{nameCamelCase}}Request)
+        {
+            await _{{nameCamelCase}}UseCase.Inserir({{nameCamelCase}}Request, _presenter);
+            return _presenter.ContentResult;
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Alterar([FromBody]Alterar{{name}}Request {{nameCamelCase}}Request)
+        {
+
+            await _{{nameCamelCase}}UseCase.Alterar({{nameCamelCase}}Request, _presenter);
+            return _presenter.ContentResult;
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Excluir(int id)
+        {
+            await _{{nameCamelCase}}UseCase.Excluir(id, _presenter);
+            return _presenter.ContentResult;
+        }
+
+		[HttpGet("{id}")]
+        public async Task<IActionResult> ObterPorId(int id)
+        {
+            await _{{nameCamelCase}}UseCase.ObterPorId(id, _presenter);
+            return _presenter.ContentResult;
+        }
+
+        [HttpGet]		
+        public async Task<IActionResult> ObterLista()
+        {
+			await _{{nameCamelCase}}UseCase.ObterLista(_presenter);
+            return _presenter.ContentResult;
+        }
+	}
+}

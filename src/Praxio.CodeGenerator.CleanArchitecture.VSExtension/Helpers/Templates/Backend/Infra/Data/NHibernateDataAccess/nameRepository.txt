@@ -1,0 +1,16 @@
+﻿using AutoMapper;
+using NHibernate;
+using {{namespaceApplication}}.Interfaces.Repositories;
+using {{namespaceDomain}}.Entities;
+using {{namespace}}.NHibernateDataAccess.DataModels;
+
+namespace {{namespace}}.NHibernateDataAccess.Repositories
+{
+    public class {{name}}Repository : Repository<{{name}}Model,{{name}}Data>, I{{name}}Repository
+    {
+        public {{name}}Repository(ISessionFactory sessionFactory, IMapper mapper) : base(sessionFactory, mapper) 
+		{ 
+		
+		}
+    }
+}

@@ -1,0 +1,12 @@
+﻿using FluentValidation;
+
+namespace {{namespace}}.{{name}}.Base.Validations
+{
+    public class {{tipo}}{{name}}Validator : {{tipo}}{{name}}ValidatorGenerated
+    {
+        public {{tipo}}{{name}}Validator() : base()
+        {
+         
+        }
+    }
+}

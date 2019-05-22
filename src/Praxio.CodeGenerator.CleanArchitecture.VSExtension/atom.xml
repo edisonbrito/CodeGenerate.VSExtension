@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text" />
+  <id>uuid:cacc1a6b-4a09-4024-ad16-079fd67bf730;id=1</id>
+  <updated>2019-05-21T21:25:48Z</updated>
+  <entry>
+    <id>praxio..cacc1a6b-4a09-4024-ad16-079fd67bf730</id>
+    <title type="text">Gerador Clean Architecture.</title>
+    <summary type="text">Projeto para gerar CRUD baseado no modelo Clean Architecture.</summary>
+    <published>2019-05-21T14:24:51-07:00</published>
+    <updated>2019-05-21T18:24:51-07:00</updated>
+    <author>
+      <name>Praxio</name>
+    </author>
+    <link rel="icon" href="logo_tools.png" />
+    <link rel="previewimage" href="logo_tools.png" />
+    <content type="application/octet-stream" src="Praxio.CodeGenerator.CleanArchitecture.VSExtension.vsix" />
+    <Vsix xmlns="http://schemas.microsoft.com/developer/vsx-syndication-schema/2010" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <Id>praxio..cacc1a6b-4a09-4024-ad16-079fd67bf730</Id>
+      <Version>version</Version>
+      <References />
+      <Rating xsi:nil="true" />
+      <RatingCount xsi:nil="true" />
+      <DownloadCount xsi:nil="true" />
+    </Vsix>
+  </entry>  
+</feed>

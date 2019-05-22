@@ -1,0 +1,35 @@
+﻿import { Injectable } from '@angular/core';
+import { ValidationResult, Validator, IValidator } from 'ts.validator.fluent/dist';
+import { I{{name}}Model } from '@app/core/domain/entities/{{nameCamelCase}}.model';
+import { IValidatorMensagem } from '@app/core/interfaces/mensagens/IValidatorMensagem';
+import { I{{name}}Validator } from '@app/core/interfaces/validations/I{{name}}Validator';
+import { {{name}}ValidatorGenerated } from './{{name}}Validator.generated';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class {{name}}Validator extends {{name}}ValidatorGenerated implements I{{name}}Validator{  
+  constructor(
+    protected iValidatorMensagem: IValidatorMensagem
+  ) {
+      super(iValidatorMensagem);    
+  }
+
+  validateFields(model: I{{name}}Model): ValidationResult {    
+    return new Validator(model).Validate(this.validateRules);
+  }  
+
+  validateRules = (validator: IValidator<I{{name}}Model>): ValidationResult => {  
+    return this.validateBase(validator)
+	  .ToResult();
+  }
+
+  validarId(id: number): ValidationResult {
+    return new Validator(id).Validate(this.validateIdRules);
+  }
+
+  validateIdRules = (validator: IValidator<number>): ValidationResult => {
+    return this.validateIdBase(validator)
+      .ToResult();
+  }
+}

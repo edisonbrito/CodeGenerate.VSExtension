@@ -1,0 +1,5 @@
+﻿import { DomainModel } from './base/domain.model';
+
+export interface I{{name}}ModelGenerated extends DomainModel {
+  {{property}}
+}

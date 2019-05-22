@@ -1,0 +1,96 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using FluentValidation;
+using AutoMapper;
+using System.Linq;
+using {{namespace}}.Interfaces.UseCases;
+using {{namespace}}.Interfaces.Repositories;
+using {{namespace}}.Interfaces;
+using {{namespace}}.Resources;
+using {{namespaceDomain}}.Entities;
+
+namespace {{namespace}}.UseCases.{{name}}.Base
+{
+    public class {{name}}UseCase : I{{name}}UseCase
+    {
+        private readonly I{{name}}Repository _{{nameCamelCase}}Repository;
+		private readonly IValidator<Inserir{{name}}Request> _inserir{{name}}Validator;
+		private readonly IValidator<Alterar{{name}}Request> _alterar{{name}}Validator;
+        private readonly IMapper _mapper;
+
+		 public {{name}}UseCase(I{{name}}Repository {{nameCamelCase}}Repository, 
+            IValidator<Inserir{{name}}Request> inserir{{name}}Validator,
+			IValidator<Alterar{{name}}Request> alterar{{name}}Validator,
+            IMapper mapper)
+        {
+            _{{nameCamelCase}}Repository = {{nameCamelCase}}Repository;
+            _inserir{{name}}Validator = inserir{{name}}Validator;
+			_alterar{{name}}Validator = alterar{{name}}Validator;
+            _mapper = mapper;
+        }
+
+		public async Task Inserir(Inserir{{name}}Request {{nameCamelCase}}Request, IOutputPort<{{name}}Response> outputPort)
+        {
+            var validations = _inserir{{name}}Validator.Validate({{nameCamelCase}}Request);
+
+			if (!validations.IsValid)
+            {
+                outputPort.Handler(new {{name}}Response(validations.Errors.Select(x => x.ErrorMessage)));
+                return;
+            }
+            
+            var {{nameCamelCase}}Model = _mapper.Map<{{name}}Model>({{nameCamelCase}}Request);                
+            await _{{nameCamelCase}}Repository.Inserir({{nameCamelCase}}Model);
+            outputPort.Handler(_mapper.Map<{{name}}Response>({{nameCamelCase}}Model));            
+        }
+
+		public async Task Alterar(Alterar{{name}}Request {{nameCamelCase}}Request, IOutputPort<{{name}}Response> outputPort)
+        {
+            var validations = _alterar{{name}}Validator.Validate({{nameCamelCase}}Request);
+
+			if (!validations.IsValid)
+            {
+                outputPort.Handler(new {{name}}Response(validations.Errors.Select(x => x.ErrorMessage)));
+                return;
+            }
+
+			if (!await Existe({{nameCamelCase}}Request.Id, outputPort))
+                return;
+            
+            var {{nameCamelCase}}Model = _mapper.Map<{{name}}Model>({{nameCamelCase}}Request);                
+            await _{{nameCamelCase}}Repository.Alterar({{nameCamelCase}}Model);
+            outputPort.Handler(_mapper.Map<{{name}}Response>({{nameCamelCase}}Model));            
+        }
+
+        public async Task Excluir(int id, IOutputPort<{{name}}Response> outputPort)
+        {
+			if (!await Existe(id, outputPort))
+                return;    
+
+            await _{{nameCamelCase}}Repository.Excluir(id);          
+        }
+
+        public async Task ObterPorId(int id, IOutputPort<{{name}}Response> outputPort)
+        {
+            var {{nameCamelCase}}Model = await _{{nameCamelCase}}Repository.ObterPorId(id);
+
+            if ({{nameCamelCase}}Model != null)
+                outputPort.Handler(_mapper.Map<{{name}}Response>({{nameCamelCase}}Model));            
+        }
+
+        public async Task ObterLista(IOutputPort<IEnumerable<{{name}}Response>> outputPort)
+        {
+           outputPort.Handler(_mapper.Map<IEnumerable<{{name}}Response>>(await _{{nameCamelCase}}Repository.ObterLista()));            
+        }
+
+		private async Task<bool> Existe(int id, IOutputPort<{{name}}Response> outputPort)
+        {
+            var existe = await _{{nameCamelCase}}Repository.Existe(id);
+
+            if (!existe)
+                outputPort.Handler(new {{name}}Response(Mensagens.IdNaoEncontrado));
+
+            return existe;
+        }
+    }
+}

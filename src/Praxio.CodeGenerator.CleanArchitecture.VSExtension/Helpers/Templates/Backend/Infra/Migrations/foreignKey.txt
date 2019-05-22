@@ -1,0 +1,5 @@
+﻿			Create.ForeignKey("FK_{{from}}_{{to}}")
+				.FromTable("{{from}}")
+				.ForeignColumns("Id{{to}}")
+				.ToTable("{{to}}")
+				.PrimaryColumns("Id");

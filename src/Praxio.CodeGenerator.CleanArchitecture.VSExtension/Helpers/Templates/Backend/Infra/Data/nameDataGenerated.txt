@@ -1,0 +1,10 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace {{namespace}}.{{pastaOrm}}.DataModels
+{
+    public partial class {{name}}Data : DataModel
+    {
+		{{property}}
+    }
+}

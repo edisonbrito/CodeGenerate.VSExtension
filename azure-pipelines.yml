@@ -1,0 +1,46 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+
+steps:
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
+  inputs:
+    vstsFeed: '/c0fa8bbc-8dca-496c-bc2c-2d2e0b98c9bf'
+
+- task: VSBuild@1
+  displayName: 'Build solution Praxio.CodeGenerator.CleanArchitecture.sln'
+  inputs:
+    solution: Praxio.CodeGenerator.CleanArchitecture.sln
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
+
+- task: CopyFiles@2
+  displayName: 'Copia arquivos para: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    Contents: |
+     src\Praxio.CodeGenerator.CleanArchitecture.VSExtension\bin\**\*.vsix
+     src\Praxio.CodeGenerator.CleanArchitecture.VSExtension\atom.xml
+     src\Praxio.CodeGenerator.CleanArchitecture.VSExtension\logo_tools.png
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'   
+    flattenFolders: true 
+
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Copia arquivos para: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: Extensoes

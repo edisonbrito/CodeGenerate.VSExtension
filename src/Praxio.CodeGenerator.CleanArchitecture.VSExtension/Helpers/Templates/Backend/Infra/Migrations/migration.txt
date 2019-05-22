@@ -1,0 +1,19 @@
+﻿using FluentMigrator;
+using {{namespace}}.Base;
+
+namespace {{namespace}}
+{
+	[MigrationBase({{numeroMigration}}, "tools")]
+    public class Migration{{numeroMigration}} : Migration
+    {
+		public override void Up()
+        {
+            {{up}}
+        }
+
+        public override void Down()
+        {
+            {{down}}
+        }
+    }
+}

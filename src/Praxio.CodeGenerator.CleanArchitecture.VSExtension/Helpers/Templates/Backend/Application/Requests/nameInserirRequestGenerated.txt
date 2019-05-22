@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using {{namespace}}.Interfaces;
+using System.ComponentModel.DataAnnotations;
+
+namespace {{namespace}}.UseCases.{{name}}.Base
+{
+    public partial class Inserir{{name}}Request : IUseCaseRequest<{{name}}Response>
+    {
+        {{property}}
+    }
+}

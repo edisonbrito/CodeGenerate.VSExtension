@@ -1,0 +1,24 @@
+﻿import { Injectable } from '@angular/core';
+import { IValidator } from 'ts.validator.fluent/dist';
+import { I{{name}}Model } from '@app/core/domain/entities/{{nameCamelCase}}.model';
+import { IValidatorMensagem } from '@app/core/interfaces/mensagens/IValidatorMensagem';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class {{name}}ValidatorGenerated {
+
+  constructor(
+    protected iValidatorMensagem: IValidatorMensagem
+  ) {
+  }
+
+  protected validateBase(validator: IValidator<I{{name}}Model>){
+    return validator{{validations}}
+  }
+
+  protected validateIdBase(validator: IValidator<number>){
+    return validator
+    .IsNumberNotEqual(m => m, 0, this.iValidatorMensagem.idNaoEncontrado().value)
+  }
+}

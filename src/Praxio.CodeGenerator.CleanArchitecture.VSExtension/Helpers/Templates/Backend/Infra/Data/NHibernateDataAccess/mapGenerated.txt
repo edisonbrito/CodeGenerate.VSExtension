@@ -1,0 +1,13 @@
+﻿using {{namespace}}.NHibernateDataAccess.DataModels;
+
+namespace {{namespace}}.NHibernateDataAccess.Mappings
+{
+    public class {{name}}MapGenerated : MapBase<{{name}}Data>
+    {
+        public {{name}}MapGenerated()
+        {
+            CreateIdColumn("{{name}}", "Id");          
+			{{property}}
+        }
+    }
+}

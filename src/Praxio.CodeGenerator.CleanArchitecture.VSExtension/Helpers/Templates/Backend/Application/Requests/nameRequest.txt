@@ -1,0 +1,9 @@
+﻿using {{namespace}}.Interfaces;
+
+namespace {{namespace}}.UseCases.{{name}}.Base
+{
+    public partial class {{method}}{{name}}Request : IUseCaseRequest<{{name}}Response>
+    {
+        
+    }
+}
