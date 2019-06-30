@@ -1,2 +1,2 @@
 # Introduction 
-VsExtensio (scaffolding criada para Visual Studio 2017)
+VsExtension (scaffolding) criada para Visual Studio 2017.
